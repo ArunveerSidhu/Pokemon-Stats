@@ -21,7 +21,8 @@ function App() {
         setPokemon(
           {
             name: pokemonName, 
-            species: response.data.species.name, img: response.data.sprites.front_default, 
+            species: response.data.species.name, 
+            img: response.data.sprites.front_default, 
             hp: response.data.stats[0].base_stat,
             attack: response.data.stats[1].base_stat,
             defense: response.data.stats[2].base_stat,
@@ -31,6 +32,12 @@ function App() {
           setPokemonChosen(true)
       })
   }
+
+  addEventListener("keypress",(e) =>{
+    if(e.keyCode === 13){
+      document.getElementById("srchBtn").click()
+    }
+  })
 
 
   return (
@@ -48,7 +55,7 @@ function App() {
             <div>
             <input type="text" placeholder="Enter Pokemon..." className=" h-9 w-80 rounded-lg text-center text-white bg-gray-400 bg-opacity-10 shadow-xl" onChange={(event) => {setPokemonName(event.target.value)}} />
             
-            <button className=" mx-4 p-2 bg-gray-600 text-white font-mono bg-opacity-25 rounded-lg shadow-xl active:scale-95 active:text-gray-500 transition-all text-sm" onClick={searchPokemon}>Search</button>
+            <button className=" mx-4 p-2 bg-gray-600 text-white font-mono bg-opacity-25 rounded-lg shadow-xl active:scale-95 active:text-gray-500 transition-all text-sm" onClick={searchPokemon} id="srchBtn">Search</button>
             </div>
             
             
